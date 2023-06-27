@@ -4,11 +4,21 @@ public class StudentDtoOut {
     private Long id;
     private String name;
     private int age;
+    private FacultyDtoOut faculty;
 
-    public StudentDtoOut(Long id, String name, int age) {
+    public StudentDtoOut(Long id, String name, int age, FacultyDtoOut faculty) {
         this.id=id;
         this.name = name;
         this.age = age;
+        this.faculty=faculty;
+    }
+
+    public FacultyDtoOut getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(FacultyDtoOut faculty) {
+        this.faculty = faculty;
     }
 
     public Long getId() {

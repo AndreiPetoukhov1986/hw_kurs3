@@ -1,6 +1,7 @@
 package ru.hogwarts.school.controller;
 
 import org.springframework.web.bind.annotation.*;
+import ru.hogwarts.school.dto.FacultyDtoOut;
 import ru.hogwarts.school.dto.StudentDtoIn;
 import ru.hogwarts.school.dto.StudentDtoOut;
 import ru.hogwarts.school.service.StudentService;
@@ -40,5 +41,15 @@ public class StudentController {
     @GetMapping
     public List<StudentDtoOut> findByAge(@RequestParam(required = false) Integer age) {
         return studentService.findByAge(age);
+    }
+
+    @GetMapping("/filter")
+    public List<StudentDtoOut> findByAgeBetween(@RequestParam int ageMin, @RequestParam int ageMax) {
+        return studentService.findByAgeBetween(ageMin, ageMax);
+    }
+
+    @GetMapping("/{id}/faculty")
+    public FacultyDtoOut findFaculty(@PathVariable("id") long id) {
+        return studentService.findFaculty(id);
     }
 }
