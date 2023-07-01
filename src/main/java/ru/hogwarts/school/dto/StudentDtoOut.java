@@ -6,12 +6,7 @@ public class StudentDtoOut {
     private int age;
     private FacultyDtoOut faculty;
 
-    public StudentDtoOut(Long id, String name, int age, FacultyDtoOut faculty) {
-        this.id=id;
-        this.name = name;
-        this.age = age;
-        this.faculty=faculty;
-    }
+    private String avatarUrl;
 
     public FacultyDtoOut getFaculty() {
         return faculty;
@@ -46,5 +41,13 @@ public class StudentDtoOut {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 }

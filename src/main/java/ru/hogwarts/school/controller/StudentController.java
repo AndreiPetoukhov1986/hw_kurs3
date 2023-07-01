@@ -1,6 +1,8 @@
 package ru.hogwarts.school.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import ru.hogwarts.school.dto.FacultyDtoOut;
 import ru.hogwarts.school.dto.StudentDtoIn;
 import ru.hogwarts.school.dto.StudentDtoOut;
@@ -30,7 +32,6 @@ public class StudentController {
     @PutMapping
     public StudentDtoOut editStudent(@PathVariable("id") long id, @RequestBody StudentDtoIn studentDtoIn) {
         return studentService.editStudent(id, studentDtoIn);
-
     }
 
     @DeleteMapping("{id}")
@@ -51,5 +52,11 @@ public class StudentController {
     @GetMapping("/{id}/faculty")
     public FacultyDtoOut findFaculty(@PathVariable("id") long id) {
         return studentService.findFaculty(id);
+    }
+
+    @PatchMapping(value = "/{id}/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public StudentDtoOut uploadAvatar(@PathVariable long id,
+                                      @RequestPart("avatar") MultipartFile multipartFile) {
+        return studentService.uploadAvatar(id, multipartFile);
     }
 }
